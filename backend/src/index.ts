@@ -17,7 +17,7 @@ app.use(express.json());
 
 app.use(cors({
     credentials : true,
-    origin : ["http://localhost:4200"]
+    // origin : ["http://localhost:4200"]
 }));
 
 app.use("/api/food" ,foodRouter);
@@ -25,7 +25,7 @@ app.use("/api/users" ,userRouter);
 app.use("/api/orders" ,orderRouter);
 
 
-app.get('/home' , (req,res)=>{
+app.get('/' , (req,res)=>{
     res.status(200).send('hello')
 })
 
