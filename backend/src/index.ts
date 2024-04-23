@@ -24,7 +24,18 @@ app.use("/api/food" ,foodRouter);
 app.use("/api/users" ,userRouter);
 app.use("/api/orders" ,orderRouter);
 
-
+app.get('/api/food/tag', async (req, res) => {
+    try {
+      const response = await fetch('https://food-zone-server-nine.vercel.app/api/food/tag');
+      const data = await response.json();
+      res.header('Access-Control-Allow-Origin', 'https://food-zone-alpha-xi.vercel.app');
+      res.json(data);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+  
 app.get('/' , (req,res)=>{
     res.status(200).send('hello')
 })
