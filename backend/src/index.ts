@@ -14,7 +14,6 @@ dbConnect();
 const app = express();
 app.use(express.json());
 
-
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', 'https://food-zone-alpha-xi.vercel.app');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -28,21 +27,15 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 app.use("/api/food" ,foodRouter);
 app.use("/api/users" ,userRouter);
 app.use("/api/orders" ,orderRouter);
 
-app.get('/api/food/tag', async (req, res) => {
-    try {
-      const response = await fetch('https://food-zone-server-nine.vercel.app/api/food/tag');
-      const data = await response.json();
-      res.header('Access-Control-Allow-Origin', 'https://food-zone-alpha-xi.vercel.app');
-      res.json(data);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
-  });
+
 
 app.get('/' , (req,res)=>{
     res.status(200).send('hello')
