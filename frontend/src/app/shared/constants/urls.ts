@@ -1,10 +1,10 @@
-const BASE_URL = "https://food-zone-server-nine.vercel.app"
+const BASE_URL = "https://vuebackend-main.vercel.app"
 
-export const FOOD_URL = BASE_URL+'/api/food';
-export const FOOD_TAG_URL = BASE_URL+'/api/food/tag';
-export const FOOD_BY_SEARCH_URL = BASE_URL+'/api/food/search/';
-export const FOOD_BY_TAG_URL = BASE_URL+'/api/food/tag/';
-export const FOOD_BY_ID_URL = BASE_URL+'/api/food/';
+export const FOOD_URL = BASE_URL +'/api/food';
+export const FOOD_TAG_URL = BASE_URL +'/api/food/tag';
+export const FOOD_BY_SEARCH_URL = BASE_URL +'/api/food/search/';
+export const FOOD_BY_TAG_URL = BASE_URL +'/api/food/tag/';
+export const FOOD_BY_ID_URL = BASE_URL +'/api/food/';
 
 export const USER_LOGIN_URL = BASE_URL + '/api/users/login';
 export const USER_REGISTER_URL = BASE_URL + '/api/users/register';
