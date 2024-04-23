@@ -9,6 +9,9 @@ import { ToastrService} from 'ngx-toastr';
   styleUrls: ['./profile-page.component.css']
 })
 export class ProfilePageComponent implements OnInit {
+toggleEditingProfile() {
+throw new Error('Method not implemented.');
+}
   user!: User
   selectedFile!: File | undefined;
 
@@ -18,7 +21,7 @@ export class ProfilePageComponent implements OnInit {
     this.user = this.userService.currentUser
   }
 
-  editingProfile = false;
+ editingProfile = false;
  editedUser = { ...this.user };
 
   
@@ -48,12 +51,8 @@ export class ProfilePageComponent implements OnInit {
       return;
     }
     this.user!.profilePictureUrl = URL.createObjectURL(this.selectedFile);
-
     // Reset selectedFile to allow for uploading a new file
     this.selectedFile = undefined ;
-    this.toastrService.success('Profile picture uploaded successfully');
-
-   
-    
+    this.toastrService.success('Profile picture uploaded successfully');     
   }
 }
