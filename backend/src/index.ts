@@ -16,7 +16,7 @@ app.use(express.json());
 
 app.use(cors({
     credentials : true,
-    origin : ["https://food-zone-beta-peach.vercel.app"]
+    origin : ["http://localhost:4200"]
 }));
 
 app.use("/api/food" ,foodRouter);
@@ -24,13 +24,11 @@ app.use("/api/users" ,userRouter);
 app.use("/api/orders" ,orderRouter);
 
 
-
-app.get('/', (res : any)=>{
+app.get('/', (req,res)=>{
     res.send('hii')
 })
 
-const port = process.env.port || 7000;
+const port = process.env.port ||7000;
 app.listen(port, () => {
     console.log("your website is served on http://localhost:"+port);
 });
-            
