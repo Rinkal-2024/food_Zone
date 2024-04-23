@@ -27,6 +27,9 @@ app.use("/api/orders" ,orderRouter);
 app.get('/', (req,res)=>{
     res.send('hii')
 })
+app.get('/home', (req , res)=>{
+    res.send('hello ')
+})
 
 const port = process.env.port ||7000;
 app.listen(port, () => {
