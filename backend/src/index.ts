@@ -1,8 +1,7 @@
 import dotenv from 'dotenv'
 dotenv.config();
 require('dotenv').config();
-// import express from "express";
-const express = require('express')
+ import express from "express";
 import cors from "cors"
 import jwt from "jsonwebtoken"
 import { sample_foods, sample_tags, sample_users } from "./data";
@@ -15,7 +14,6 @@ dbConnect();
 const app = express();
 app.use(express.json());
 
-
 app.use(cors({
     credentials : true,
     origin : ["https://food-zone-beta-peach.vercel.app"]
@@ -27,7 +25,7 @@ app.use("/api/orders" ,orderRouter);
 
 
 
-app.get('/home', (res : any)=>{
+app.get('/', (res : any)=>{
     res.send('hii')
 })
 
