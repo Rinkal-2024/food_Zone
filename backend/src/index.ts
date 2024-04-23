@@ -14,10 +14,9 @@ dbConnect();
 const app = express();
 app.use(express.json());
 
-
 app.use(cors({
     credentials : true,
-    // origin : ["http://localhost:4200"]
+    origin : ["http://localhost:4200"]
 }));
 
 app.use("/api/food" ,foodRouter);
@@ -28,7 +27,6 @@ app.use("/api/orders" ,orderRouter);
 app.get('/' , (req,res)=>{
     res.status(200).send('hello')
 })
-
 
 const port =5000;
 app.listen(port, () => {
