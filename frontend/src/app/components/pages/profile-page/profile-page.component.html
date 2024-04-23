@@ -1,0 +1,51 @@
+<!-- profile-page.component.html -->
+<div>
+  
+  <div *ngIf="!editingProfile">
+    <h1>User Profile</h1>
+    <div class="profile-container">
+      <p><strong>Name:</strong> {{ user.name }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      <div *ngIf="user.profilePictureUrl" class="profile-picture">
+        <img [src]="user.profilePictureUrl" alt="Profile Picture">
+      </div>
+      <div class="upload-section">
+        <input type="file" (change)="onFileSelected($event)">
+        <button (click)="uploadProfilePicture()">Upload Profile Picture</button>
+        
+      </div>
+       <button (click)="toggleEditingProfile()">Edit Profile</button>
+    </div>
+   
+  </div>
+</div>
+
+  <div *ngIf="editingProfile" class="edit-profile">
+    <h2>Edit Profile</h2>
+    <form (submit)="updateProfile()">
+      <label for="fullName">Full Name</label>
+      <input type="text" id="fullName" name="fullName" [(ngModel)]="editedUser.name">
+      
+      <label for="phoneNumber">Phone Number</label>
+      <input type="text" id="phoneNumber" name="phoneNumber" [(ngModel)]="editedUser.phoneNumber">
+      
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" [(ngModel)]="editedUser.email">
+      
+      <label for="city">City</label>
+      <input type="text" id="city" name="city" [(ngModel)]="editedUser.city">
+      
+      <label for="description">Description</label>
+      <textarea id="description" name="description" maxlength="150" [(ngModel)]="editedUser.description"></textarea>
+      
+      <label for="handle">Handle</label>
+      <input type="text" id="handle" name="handle" [(ngModel)]="editedUser.handle">
+      
+      <label for="website">Website</label>
+      <input type="url" id="website" name="website" [(ngModel)]="editedUser.website">
+      
+      <button type="button" (click)="cancel()">Cancel</button>
+      <button type="submit">Update</button>
+    </form>
+  </div>
+

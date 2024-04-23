@@ -1,0 +1,49 @@
+.edit-profile {
+    width: 400px;
+    margin: 20px auto;
+}
+
+.edit-profile h2 {
+    margin-bottom: 20px;
+}
+
+.edit-profile form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-profile label {
+    margin-top: 10px;
+}
+
+.edit-profile input[type="text"],
+.edit-profile input[type="email"],
+.edit-profile input[type="url"],
+.edit-profile textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.edit-profile textarea {
+    resize: vertical;
+}
+
+.edit-profile button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-profile button[type="submit"] {
+    background-color: blue;
+    color: white;
+}
+
+.edit-profile button[type="submit"]:hover {
+    background-color: darkblue;
+}

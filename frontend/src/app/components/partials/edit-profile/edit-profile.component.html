@@ -1,0 +1,30 @@
+<div class="edit-profile">
+    <h2>Edit Profile</h2>
+    <form>
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" [value]="">{{user.name}}
+        
+        <label for="phoneNumber">Phone Number</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" value="You can update your phone number using this app" disabled>
+        <button type="button" (click)="changePhoneNumber()">Change</button>
+        
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" value="rinkals263@gmail.com">
+        
+        <label for="city">City</label>
+        <input type="text" id="city" name="city" value="Ahmedabad">
+        
+        <label for="description">Description</label>
+        <textarea id="description" name="description" maxlength="150">Tell us something about yourself (150 characters remaining)</textarea>
+        
+        <label for="handle">Handle</label>
+        <input type="text" id="handle" name="handle" value="You can only change your handle once" disabled>
+        
+        <label for="website">Website</label>
+        <input type="url" id="website" name="website">
+        
+        <button type="button" (click)="cancel()">Cancel</button>
+        <button type="submit" (click)="updateProfile()">Update</button>
+    </form>
+</div>
+
