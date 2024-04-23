@@ -1,7 +1,8 @@
 import dotenv from 'dotenv'
 dotenv.config();
-// require('dotenv').config();
-import express from "express";
+require('dotenv').config();
+// import express from "express";
+const express = require('express')
 import cors from "cors"
 import jwt from "jsonwebtoken"
 import { sample_foods, sample_tags, sample_users } from "./data";
@@ -14,22 +15,21 @@ dbConnect();
 const app = express();
 app.use(express.json());
 
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'https://food-zone-beta-peach.vercel.app');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-    res.setHeader('Access-Control-Allow-Credentials', '');
-    next();
-  });
+
+
+// app.use((req, res, next) => {
+//     res.setHeader('Access-Control-Allow-Origin', 'https://food-store1-alpha.vercel.app');
+//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+//     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+//     res.setHeader('Access-Control-Allow-Credentials', '');
+//     next();
+//   });
+
+// app.use(cors())
 app.use(cors({
     credentials : true,
-    origin : ["https://food-zone-beta-peach.vercel.app"],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    origin : ["https://food-store1-master.vercel.app"]
 }));
-
-const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 
 app.use("/api/food" ,foodRouter);
 app.use("/api/users" ,userRouter);
@@ -37,12 +37,12 @@ app.use("/api/orders" ,orderRouter);
 
 
 
-app.get('/' , (req,res)=>{
-    res.status(200).send('hello')
+app.get('/home', (res : any)=>{
+    res.send('hii')
 })
 
-const port =5000;
+const port = process.env.port || 7000;
 app.listen(port, () => {
-    console.log("your website is served on http://localhost:5000");
+    console.log("your website is served on http://localhost:"+port);
 });
             
