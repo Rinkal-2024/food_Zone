@@ -16,7 +16,7 @@ app.use(express.json());
 
 app.use(cors({
     credentials : true,
-    origin : ["http://localhost:4200"]
+    origin : ["https://food-zone-alpha-xi.vercel.app"]
 }));
 
 app.use("/api/food" ,foodRouter);
