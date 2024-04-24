@@ -16,7 +16,7 @@ app.use(express.json());
 
 app.use(cors({
     credentials : true,
-    origin : ["https://food-zone-beta-peach.vercel.app"]
+    origin : ["https://food-zone-pearl.vercel.app"]
 }));
 
 app.use("/api/food" ,foodRouter);
