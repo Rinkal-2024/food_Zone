@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:7000'
+const BASE_URL = 'https://food-zone-server-one.vercel.app'
 
 export const FOOD_URL = BASE_URL +'/api/food';
 export const FOOD_TAG_URL = BASE_URL +'/api/food/tag';
