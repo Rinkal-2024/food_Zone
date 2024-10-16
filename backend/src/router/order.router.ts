@@ -22,7 +22,6 @@ asyncHandler(async (req:any, res:any) => {
         user: req.user.id,
         status: OrderStatus.NEW
     });
-
     const newOrder = new OrderModel({...requestOrder,user: req.user.id});
     await newOrder.save();
     res.send(newOrder);
@@ -52,15 +51,11 @@ router.post('/pay', asyncHandler( async (req:any, res) => {
 }))
 
 
-
-
 router.get('/', asyncHandler( async (req:any, res) => {
 
     res.send("hii everyone");
     
 }))
-
-
 
 router.get('/track/:id', asyncHandler( async (req, res) => {
     const order = await OrderModel.findById(req.params.id);

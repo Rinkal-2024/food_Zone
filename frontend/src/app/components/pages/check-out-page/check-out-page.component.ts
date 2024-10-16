@@ -58,7 +58,7 @@ this.order.totalPrice = cart.totalPrice;
         this.router.navigateByUrl('/payment')
       },
       error : (errorResponse) =>{
-        this.toastrService.error(errorResponse.error, 'Cart');
+        this.toastrService.error(errorResponse.error, 'Cart');  
       }
     })
     console.log(this.order);

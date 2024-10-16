@@ -23,7 +23,9 @@ const routes: Routes = [
   {path : 'checkout', component : CheckOutPageComponent , canActivate : [AuthGuard]},
   {path : 'payment', component : PaymentPageComponent , canActivate : [AuthGuard]},
   {path : 'track/:orderId', component : OrderTrackPageComponent , canActivate : [AuthGuard]},
-  {path : 'profile' , component : ProfilePageComponent}
+  {path : 'profile' , component : ProfilePageComponent},
+  // {path : 'track/:orderId', component : OrderTrackPageComponent , canActivate : [AuthGuard]},
+  
 
 ];
 

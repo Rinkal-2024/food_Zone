@@ -6,47 +6,47 @@ import { OrderService } from 'src/app/services/order.service';
 import { Order } from 'src/app/shared/models/Order';
 
 //window.paypal To set paypal sdk in project it is declare this variable in javascript and we use paypal sdk functionality
-declare var paypal : any;
+declare var paypal: any;
 @Component({
   selector: 'paypal-button',
   templateUrl: './paypal-button.component.html',
-  styleUrls: ['./paypal-button.component.css']
+  styleUrls: ['./paypal-button.component.css'],
 })
-export class PaypalButtonComponent implements OnInit{
-  
+export class PaypalButtonComponent implements OnInit {
   @Input()
-  order!:Order;
+  order!: Order;
 
-  @ViewChild('paypal', {static: true})
-  paypalElement!:ElementRef;
+  @ViewChild('paypal', { static: true })
+  paypalElement!: ElementRef;
 
-  constructor(private orderService: OrderService,
-              private cartService: CartService,
-              private router:Router,
-              private toastrService: ToastrService) { }
+  constructor(
+    private orderService: OrderService,
+    private cartService: CartService,
+    private router: Router,
+    private toastrService: ToastrService
+  ) {}
 
   ngOnInit(): void {
     const self = this;
     paypal
-    .Buttons({
-      createOrder: (data: any, actions: any) => {
-        return actions.order.create({
-          purchase_units: [
-            {
-              amount: {
-                currency_code: 'CAD',
-                value: self.order.totalPrice,
+      .Buttons({
+        createOrder: (data: any, actions: any) => {
+          return actions.order.create({
+            purchase_units: [
+              {
+                amount: {
+                  currency_code: 'CAD',
+                  value: self.order.totalPrice,
+                },
               },
-            },
-          ],
-        });
-      },
+            ],
+          });
+        },
 
-      onApprove: async (data: any, actions: any) => {
-        const payment = await actions.order.capture();
-        this.order.paymentId = payment.id;
-        self.orderService.pay(this.order).subscribe(
-          {
+        onApprove: async (data: any, actions: any) => {
+          const payment = await actions.order.capture();
+          this.order.paymentId = payment.id;
+          self.orderService.pay(this.order).subscribe({
             next: (orderId) => {
               this.cartService.clearCart();
               this.router.navigateByUrl('/track/' + orderId);
@@ -54,22 +54,20 @@ export class PaypalButtonComponent implements OnInit{
                 'Payment Saved Successfully',
                 'Success'
               );
-              this.router.navigateByUrl('/');
+              this.router.navigateByUrl('/track/' + orderId);
               this.cartService.clearCart();
             },
             error: (error) => {
               this.toastrService.error('Payment Save Failed', 'Error');
-            }
-          }
-        );
-      },
+            },
+          });
+        },
 
-      onError: (err: any) => {
-        this.toastrService.error('Payment Failed', 'Error');
-        console.log(err);
-      },
-    })
-    .render(this.paypalElement.nativeElement);
-
+        onError: (err: any) => {
+          this.toastrService.error('Payment Failed', 'Error');
+          console.log(err);
+        },
+      })
+      .render(this.paypalElement.nativeElement);
   }
-  }
+}

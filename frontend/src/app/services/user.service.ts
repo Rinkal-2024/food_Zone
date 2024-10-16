@@ -84,7 +84,6 @@ export class UserService {
       'Authorization': `Bearer ${this.currentUser.token}` 
     });
 
-
     return this.http.post<User>(USER_UPLOAD_PROFILE_PICTURE_URL, formData, { headers }).pipe(
       tap({
         next: (user) => {
